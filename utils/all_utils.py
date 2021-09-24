@@ -6,7 +6,7 @@ import joblib
 import logging
 import os
 
-plt.use.style("fivethirtyeight")
+plt.style.use("fivethirtyeight")
 
 def prepare_data(df):
 

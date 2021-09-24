@@ -1,15 +1,16 @@
 from utils.models import Perceptron
-from utils.all_utils import prepare_data, save_plot, save_model
+from utils.all_utils import prepare_data, save_model,save_plot
 import pandas as pd
 
 
-def main(data, modelName, plotName, eta, epochs):
+def main(data,modelName, plotName, eta, epochs):
     df = pd.DataFrame(data)
     print(df)
     X, y = prepare_data(df)
     model = Perceptron(eta=eta, epochs=epochs)
     model.fit(X, y)
-    _ = model.total_loss()
+    loss= model.total_loss()
+    print(f"Total loss:{loss}")
     save_model(model, filename=modelName)
     save_plot(df, plotName, model)
 
@@ -21,4 +22,4 @@ if __name__ == '__main__':
     }
     ETA = 0.3 # 0 and 1
     EPOCHS = 10
-    main(data=AND, modelName="and.model", plotName="and.png", eta=ETA, epochs=EPOCHS)
+    main(data=AND, modelName ='and.model', plotName='and.png',eta=ETA, epochs=EPOCHS)
